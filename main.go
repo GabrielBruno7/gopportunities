@@ -5,12 +5,17 @@ import (
 	"github.com/GabrielBruno7/gopportunities/router"
 )
 
+var (
+	logger *config.Logger
+)
 
 func main() {
+	logger = config.GetLogger("main")
+
 	err := config.Init();
 
 	if err != nil {
-		println(err)
+		logger.ErrorFormated("Config initialization error %v", err)
 		return
 	}
 
